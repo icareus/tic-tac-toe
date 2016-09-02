@@ -1,0 +1,32 @@
+.app, .grid, .square
+		{
+			display: flex;
+		}
+.app
+		{
+			display: -webkit-flex;
+  		-webkit-flex-direction: column;
+		}
+.grid
+		{
+      width: 600px;  
+      height: 600px;
+      flex-wrap: wrap;
+      background-color: darkblue;
+
+		}
+.square
+		{ 
+     
+      color: white;
+      font-size: 6em;
+			margin-top: 10px;
+      margin-bottom: 10px;
+      margin-right: 10px;
+      margin-left: 10px;
+      flex: 30%;
+      height: 30%;
+      background-color: lightblue;
+		}
+  p { margin: auto; }
+
