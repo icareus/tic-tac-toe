@@ -1,16 +1,30 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Square from './Square';
+import R from 'ramda';
+import { changeValue, gridCreated } from '../actions';
 
-const Grid = () => {
-  const grid = [];
-  for (let i = 0; i != 9; i = i + 1) {
-    grid[i] = <Square key={i} />
+class Grid extends React.Component {
+  constructor(props) {
+    super(props);
   };
-  return (
+
+ 
+
+
+  render() {
+    console.log('grid', this.props.grid);
+    return(
       <div className='grid'>
-        { grid }
+       
       </div>
     )
-}
+  };
+};
 
-export default Grid;
+Grid.propTypes = {
+  dispatch: React.PropTypes.func.isRequired,
+  grid: React.PropTypes.array.isRequired,
+};
+
+export default connect(state => ({ grid: state.grid }))(Grid);
