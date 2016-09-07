@@ -1,21 +1,22 @@
 import React from 'react';
 
-const Square = ({ onSquareClick, square }) => {
+const Square = ({ id, onSquareClick, value }) => {
 
   const handleClick = () => {
-    onSquareClick(square.id, square.value);
+    onSquareClick(id, value);
   };
 
   return (
     <div className='square' onClick={ handleClick } >
-      <p>{ square.value } </p>
+      <p>{ value } </p>
     </div>
   )
-} ;
+};
 
 Square.PropTypes = {
   id: React.PropTypes.number.isRequired,
   onSquareClick: React.PropTypes.func.isRequired,
+  value: React.PropTypes.string.isRequired,
 };
 
 export default Square;

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { GRID_RESET, SET_VALUE, makeSquare } from '../actions';
 import R from 'ramda';
-
+import _ from 'lodash';
 
 const gridCreated = () => {
   let grid = [];
@@ -14,33 +14,24 @@ const gridCreated = () => {
   return grid;
 };
 
+const getId = (id) => (square) => (square.id === id); 
+
+
 const gridReducer = (state = gridCreated(), action) => {
   switch (action.type) {
   case GRID_RESET:
     return action.grid
+  case SET_VALUE: 
+    return R.flatten(R.insert(action.id, [{id: action.id, value: action.value}], R.reject(getId(action.id), state)))
   default:
     return state;
   }
 };
 
-const squareReducer = (state = {}, action) => {
-  switch (action.type) {
-  case SET_VALUE:
-    return {
-      ...state,
-      ...state.square,
-      [action.square.id]: {
-        value: action.value,
-      }
-    };
-  default:
-    return state; 
-  }
-};
 
 const reducer = combineReducers({
   grid: gridReducer,
-  square: squareReducer,
+
 });
 
 export default reducer;

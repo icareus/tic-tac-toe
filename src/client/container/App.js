@@ -2,20 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Title from '../components/Title';
 import Grid from '../components/Grid';
+import Player from '../components/Player';
 import { changeValue, gridCreated } from '../actions';
 
 class App extends React.Component {
  
-  onSquareClick = (value) => {
-    console.log('onSquareClick', value);
-    this.props.dispatch(changeValue(value));
-  };
-
   render() {
+    console.log('RENDER APP');
     return(
       <div className='app'>
         <Title title='Tic Tac Toe' />
-        <Grid /> 
+        <Grid />
+        <Player id='1' />
+        <Player id='2' />
       </div>
     )
   };

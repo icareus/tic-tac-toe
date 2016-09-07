@@ -26,23 +26,27 @@ export const gridReset = () => {
 };
 
 
-
 //---------------------------------------
-export const setValue = (id, value) => ({
-  type: SET_VALUE,
-  value,
-});
 
-export const changeValue = (id, value) => {
-  console.log('changeValue', value, id);
+let turn = 0;
+
+export const setValue = (id, value) => {
   let newValue;
   if (value !== 'v') {
-    newValue === value;
+    newValue = value;
   }
   else {
-    newValue === 'x';
+    turn = turn + 1;
+    if (turn % 2 === 0) {
+      newValue = 'x';
+    }
+    else {
+      newValue = 'o';
+    }
   }
-  return (dispatch) => {
-    dispatch(setValue(id, newValue))
-  };
+  return ({
+    type: SET_VALUE,
+    id,
+    value: newValue,
+  })
 };
