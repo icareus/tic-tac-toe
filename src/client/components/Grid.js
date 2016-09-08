@@ -1,8 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Square from './Square';
+import Score from './Score';
 import R from 'ramda';
 import { setValue, gridCreated } from '../actions';
+
+let turn = -1;
 
 class Grid extends React.Component {
   constructor(props) {
@@ -21,12 +24,25 @@ class Grid extends React.Component {
       <Square key={square.id} id={square.id} value={square.value} onSquareClick={this.onSquareClick} />
     ), this.props.grid);
 
-    console.log(data);
-    return (
-      <div className='grid'>
-       {data}
-      </div>
-    )
+    console.log('data', data);
+    turn = turn + 1;
+    console.log('turn = ',turn)
+    if (turn < 9) {
+      return (
+        <div className='grid'>
+          {data}
+        </div>
+      )
+    }
+    else {
+      return (
+        <div className='grid'>
+          {data}
+          <Score />
+        </div>
+      )
+    }
+
   }
 };
   

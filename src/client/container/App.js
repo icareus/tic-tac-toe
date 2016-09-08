@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Title from '../components/Title';
 import Grid from '../components/Grid';
-import Player from '../components/Player';
+import Score from '../components/Score';
 import { changeValue, gridCreated } from '../actions';
 
 class App extends React.Component {
@@ -13,8 +13,6 @@ class App extends React.Component {
       <div className='app'>
         <Title title='Tic Tac Toe' />
         <Grid />
-        <Player id='1' />
-        <Player id='2' />
       </div>
     )
   };

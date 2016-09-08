@@ -5,7 +5,7 @@ import createLogger from 'redux-logger';
 import ReactDom from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './container/App';
-import reducer from './reducer';
+import reducer from './reducers';
 
 const store = createStore(
   reducer,
