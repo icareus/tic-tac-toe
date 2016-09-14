@@ -5,7 +5,9 @@ import Score from './Score';
 import R from 'ramda';
 import { setValue, gridCreated } from '../actions';
 
-let turn = -1;
+// let turn = -1;
+
+const mapIndexed = R.addIndex(R.map)
 
 class Grid extends React.Component {
   constructor(props) {
@@ -20,28 +22,42 @@ class Grid extends React.Component {
   render() {
     console.log('RENDER GRID');
 
-    const data = R.map((square) => (
-      <Square key={square.id} id={square.id} value={square.value} onSquareClick={this.onSquareClick} />
-    ), this.props.grid);
+    // const data = R.map((square) => (
+    //   <Square
+    //     key={square.id}
+    //     onSquareClick={this.onSquareClick}
+    //     value={square.value}/>
+    // ), this.props.grid);
 
-    console.log('data', data);
-    turn = turn + 1;
-    console.log('turn = ',turn)
-    if (turn < 9) {
-      return (
-        <div className='grid'>
-          {data}
-        </div>
-      )
-    }
-    else {
-      return (
-        <div className='grid'>
-          {data}
-          <Score />
-        </div>
-      )
-    }
+    // console.log('data', data);
+    // turn = turn + 1;
+    return (
+      <div className='grid'>
+        {mapIndexed((val, idx) =>
+          <Square
+            id={idx}
+            key={idx}
+            onSquareClick={this.onSquareClick}
+            value={val} />,
+          this.props.grid)}
+      </div>)
+    // console.log('turn = ',turn)
+    // Err... Whut ?
+    // if (turn < 9) {
+    //   return (
+    //     <div className='grid'>
+    //       {data}
+    //     </div>
+    //   )
+    // }
+    // else {
+    //   return (
+    //     <div className='grid'>
+    //       {data}
+    //       <Score />
+    //     </div>
+    //   )
+    // }
 
   }
 };
@@ -49,7 +65,7 @@ class Grid extends React.Component {
 
 Grid.propTypes = {
   setValue: React.PropTypes.func.isRequired,
-  dispatch: React.PropTypes.func.isRequired,
+  // dispatch: React.PropTypes.func.isRequired,
   grid: React.PropTypes.array.isRequired,
 };
 

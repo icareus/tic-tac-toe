@@ -4,5 +4,3 @@ dist
 *.lock
 *.tmp
 .DS_Store
-package.json
-webpack.config.js

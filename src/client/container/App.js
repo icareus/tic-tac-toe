@@ -19,9 +19,10 @@ class App extends React.Component {
 };
 
 App.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  grid: React.PropTypes.array.isRequired,
-  square: React.PropTypes.object.isRequired,
+  // Deprecated since Grid itself is connec()ed
+  // dispatch: React.PropTypes.func.isRequired,
+  // grid: React.PropTypes.array.isRequired,
+  // square: React.PropTypes.object.isRequired,
 };
 
 export default connect()(App);

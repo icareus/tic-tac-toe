@@ -1,39 +1,43 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 import R from 'ramda';
+
+const DEFAULT_VALUE = ' ';
 
 export const SET_VALUE = 'SET_VALUE';
 export const GRID_RESET = 'GRID_RESET';
 export const CALCULATE_SCORE = 'CALCULATE_SCORE';
 
 //---- INIT
-export const makeSquare = (squareId) => {
-  return ({
-    id: squareId,
-    value: 'v',
-  });
-};
+// export const makeSquare = (squareId) => {
+//   return ({
+//     id: squareId,
+//     value: 'v',
+//   });
+// };
 
-export const gridReset = () => {
-  let grid = [];
-  let newGrid;
-  for (let i = 0; i !== 9; i = i + 1) {
-    let square = makeSquare(i);
-    newGrid = R.append(square, grid);
-    grid = newGrid;
-  }
-  return ({
-    type: GRID_RESET,
-    grid,
-  });
-};
+// export const gridReset = () => {
+//   let grid = [];
+//   let newGrid;
+//   for (let i = 0; i !== 9; i = i + 1) {
+//     let square = makeSquare(i);
+//     newGrid = R.append(square, grid);
+//     grid = newGrid;
+//   }
+//   return ({
+//     type: GRID_RESET,
+//     grid,
+//   });
+// };
+export const gridReset = () => ({type: GRID_RESET})
 
 
 //---- GAME 
 let turn = 0;
 
+// SCHLAG ALERT FIX ME QUICK!!!11!!!
 export const setValue = (id, value) => {
   let newValue;
-  if (value !== 'v') {
+  if (value !== DEFAULT_VALUE) {
     newValue = value;
   }
   else {
