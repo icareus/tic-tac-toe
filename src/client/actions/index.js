@@ -1,9 +1,12 @@
 // import _ from 'lodash';
 import R from 'ramda';
 
-const DEFAULT_VALUE = ' ';
+const EMPTY = ' ';
+const CIRCLE = 'o';
+const CROSS = 'x';
 
 export const SET_VALUE = 'SET_VALUE';
+export const PLAY_SQUARE = 'PLAY_SQUARE';
 export const GRID_RESET = 'GRID_RESET';
 export const CALCULATE_SCORE = 'CALCULATE_SCORE';
 
@@ -37,12 +40,12 @@ let turn = 0;
 // SCHLAG ALERT FIX ME QUICK!!!11!!!
 export const setValue = (id, value) => {
   let newValue;
-  if (value !== DEFAULT_VALUE) {
+  if (value !== EMPTY) {
     newValue = value;
   }
   else {
     turn = turn + 1;
-    if (turn % 2 === 0) {
+    if (turn % 2) {
       newValue = 'x';
     }
     else {
@@ -56,6 +59,11 @@ export const setValue = (id, value) => {
     value: newValue,
   })
 };
+
+export const playSquare = id => ({
+  type: PLAY_SQUARE,
+  id
+})
 
 //---- SCORE
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Square from './Square';
 import Score from './Score';
 import R from 'ramda';
-import { setValue, gridCreated } from '../actions';
+import { playSquare, setValue, gridCreated } from '../actions';
 
 // let turn = -1;
 
@@ -69,4 +69,4 @@ Grid.propTypes = {
   grid: React.PropTypes.array.isRequired,
 };
 
-export default connect(state => ({ grid: state.grid }), { setValue })(Grid);
+export default connect(state => ({ grid: state.grid }), { setValue, playSquare })(Grid);

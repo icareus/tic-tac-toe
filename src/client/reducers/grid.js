@@ -1,4 +1,4 @@
-import { GRID_RESET, SET_VALUE, makeSquare } from '../actions';
+import { GRID_RESET, SET_VALUE, PLAY_SQUARE, EMPTY, makeSquare } from '../actions';
 import R from 'ramda';
 
 const GRIDSIZE = 3 * 3;
@@ -25,6 +25,12 @@ const gridReducer = (state = genGrid(), action) => {
     case SET_VALUE: 
       // return R.flatten(R.insert(action.id, [{id: action.id, value: action.value, turn: action.turn }], R.reject(getId(action.id), state)))
       return (R.set(R.lensIndex(action.id), action.value, state))
+      // TODO !!!
+    // case PLAY_SQUARE:
+    //   return R.ifelse(
+    //     R.equals(state[action.id], EMPTY),
+    //     R.set(R.lensIndex(action.id), action.value, state),
+    //     state)
     default:
       return state;
   }

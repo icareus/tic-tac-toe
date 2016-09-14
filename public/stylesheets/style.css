@@ -9,6 +9,7 @@
 		}
 .grid
 		{
+      font-family: 'Courier Sans', sans-serif;
       width: 600px;  
       height: 600px;
       flex-wrap: wrap;
